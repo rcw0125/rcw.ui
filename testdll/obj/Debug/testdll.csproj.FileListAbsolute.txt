@@ -1,0 +1,8 @@
+C:\Users\rcw\Desktop\MyForm\testdll\bin\Debug\testdll.dll
+C:\Users\rcw\Desktop\MyForm\testdll\bin\Debug\testdll.pdb
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.csprojAssemblyReference.cache
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.Form1.resources
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.csproj.GenerateResource.cache
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.csproj.CoreCompileInputs.cache
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.dll
+C:\Users\rcw\Desktop\MyForm\testdll\obj\Debug\testdll.pdb

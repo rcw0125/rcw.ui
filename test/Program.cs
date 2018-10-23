@@ -15,7 +15,7 @@ namespace test
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new RV.UI.Form1());
-            //RV.UI.menuMag.initSystem();
+           // RV.UI.menuMag.initSystem();
             Application.Run(new RV.UI.Login());
         }
     }

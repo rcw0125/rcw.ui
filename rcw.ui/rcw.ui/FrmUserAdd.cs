@@ -30,9 +30,8 @@ namespace RV.UI
                 user.C_PASSWORD = Common.MD5("123456");//密码
                 user.N_TYPE = 3;//用户类型（1内部，2新用户,3PCI用户）
                 user.N_STATUS = TS_USER.userStatus.正常;//状态(1正常，2，3，4冻结)
-                user.C_EMP_ID = UserInfo.UserID;//系统操作人编号
-                user.D_MOD_DT = ServerTime.timeNow();//系系统操作时间
-                user.D_LASTLOGINTIME = DateTime.Now;
+                user.C_EMP_ID = UserInfo.UserID;//系统操作人编号              
+                user.C_LASTLOGINTIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 user.C_DEPT = strDeptID;
             }
             else

@@ -12,8 +12,8 @@ namespace RV.UI
 {
     public partial class FrmSetRole : Form
     {
-        //private BllTS_ROLE_PCI bllRole = new BllTS_ROLE_PCI();
-        //private BllTS_USER_ROLE_PCI bllUserRole = new BllTS_USER_ROLE_PCI();
+        //private BllTS_ROLE bllRole = new BllTS_ROLE();
+        //private BllTS_USER_ROLE bllUserRole = new BllTS_USER_ROLE();
 
         private string strUserID = "0";
         public FrmSetRole(string str)
@@ -35,7 +35,7 @@ namespace RV.UI
         {
             try
             {
-                DataTable dt = TS_ROLE_PCI.GetUserRoleList(strUserID);
+                DataTable dt = TS_ROLE.GetUserRoleList(strUserID);
                 gc_Role.DataSource = dt;
                 gv_Role.BestFitColumns();
             }
@@ -60,14 +60,14 @@ namespace RV.UI
 
                 if (dt.Rows.Count > 0)
                 {                                                       
-                    List<TS_USER_ROLE_PCI> userRoleList = new List<TS_USER_ROLE_PCI>();
+                    List<TS_USER_ROLE> userRoleList = new List<TS_USER_ROLE>();
 
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         if (dt.Rows[i]["C_CHECKSTATE"].ToString() == "1")
                         {
                             string strID = dt.Rows[i]["C_ID"].ToString();
-                            TS_USER_ROLE_PCI mod = new TS_USER_ROLE_PCI();
+                            TS_USER_ROLE mod = new TS_USER_ROLE();
                             mod.C_ROLE_ID = strID;
                             mod.C_USER_ID = strUserID;
                             mod.N_STATUS = 1;
@@ -78,12 +78,12 @@ namespace RV.UI
                     }
                     if (userRoleList.Count > 0)
                     {
-                        TS_USER_ROLE_PCI.SetUserRole(strUserID, userRoleList);
+                        TS_USER_ROLE.SetUserRole(strUserID, userRoleList);
                         MessageBox.Show("角色分配成功！");
                     }
                     else
                     {
-                        TS_USER_ROLE_PCI.SetUserRole(strUserID, null);
+                        TS_USER_ROLE.SetUserRole(strUserID, null);
                         MessageBox.Show("当前用户的角色已删除");
                     }                 
                 }

@@ -167,11 +167,10 @@
     </Compile>
     <Compile Include="TS_DEPT.cs" />
     <Compile Include="TS_MODULE.cs" />
-    <Compile Include="TS_ROLE_FUN_PCI.cs" />
-    <Compile Include="TS_ROLE_PCI.cs" />
+    <Compile Include="TS_ROLE_FUN.cs" />
+    <Compile Include="TS_ROLE.cs" />
     <Compile Include="TS_USER.cs" />
-    <Compile Include="TS_USER_FUN_PCI.cs" />
-    <Compile Include="TS_USER_ROLE_PCI.cs" />
+    <Compile Include="TS_USER_ROLE.cs" />
     <Compile Include="UserInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

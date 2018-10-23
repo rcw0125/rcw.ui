@@ -39,6 +39,8 @@
             this.colC_REMARK = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtAccountName = new DevExpress.XtraEditors.TextEdit();
             this.btnQuery = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Add = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Edit = new DevExpress.XtraEditors.SimpleButton();
@@ -62,15 +64,13 @@
             this.colN_TYPE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colN_STATUS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colC_DESC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colD_LASTLOGINTIME = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colC_EMP_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colC_EMP_NAME = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colD_MOD_DT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colC_MOBILE2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colC_PHONE = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtAccountName = new DevExpress.XtraEditors.TextEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.modTSMODULEBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -78,18 +78,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.tSUSERBindingSource)).BeginInit();
             this.panel4.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tSUSERBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tSDEPTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccountName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // modTSMODULEBindingSource
             // 
-            this.modTSMODULEBindingSource.DataSource = typeof(RV.UI.TS_DEPT);
+            this.modTSMODULEBindingSource.DataSource = typeof(Rcw.Model.TS_Dept);
             // 
             // panel2
             // 
@@ -186,6 +186,23 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(817, 38);
             this.flowLayoutPanel1.TabIndex = 135;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(8, 8);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(8, 8, 2, 2);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(36, 14);
+            this.labelControl2.TabIndex = 135;
+            this.labelControl2.Text = "用户名";
+            // 
+            // txtAccountName
+            // 
+            this.txtAccountName.Location = new System.Drawing.Point(50, 6);
+            this.txtAccountName.Margin = new System.Windows.Forms.Padding(4, 6, 2, 2);
+            this.txtAccountName.Name = "txtAccountName";
+            this.txtAccountName.Size = new System.Drawing.Size(73, 20);
+            this.txtAccountName.TabIndex = 136;
             // 
             // btnQuery
             // 
@@ -301,12 +318,12 @@
             this.colN_TYPE,
             this.colN_STATUS,
             this.colC_DESC,
-            this.colD_LASTLOGINTIME,
             this.colC_EMP_ID,
             this.colC_EMP_NAME,
             this.colD_MOD_DT,
             this.colC_MOBILE2,
-            this.colC_PHONE});
+            this.colC_PHONE,
+            this.gridColumn1});
             this.gv_User.GridControl = this.gc_User;
             this.gv_User.Name = "gv_User";
             this.gv_User.OptionsView.ShowGroupPanel = false;
@@ -329,7 +346,7 @@
             this.colC_DEPT.FieldName = "C_DEPT";
             this.colC_DEPT.Name = "colC_DEPT";
             this.colC_DEPT.Visible = true;
-            this.colC_DEPT.VisibleIndex = 7;
+            this.colC_DEPT.VisibleIndex = 3;
             // 
             // repositoryItemLookUpEdit2
             // 
@@ -343,7 +360,7 @@
             // 
             // tSDEPTBindingSource
             // 
-            this.tSDEPTBindingSource.DataSource = typeof(RV.UI.TS_DEPT);
+            this.tSDEPTBindingSource.DataSource = typeof(Rcw.Model.TS_Dept);
             // 
             // colC_ACCOUNT
             // 
@@ -367,7 +384,7 @@
             this.colC_MOBILE.FieldName = "C_MOBILE";
             this.colC_MOBILE.Name = "colC_MOBILE";
             this.colC_MOBILE.Visible = true;
-            this.colC_MOBILE.VisibleIndex = 6;
+            this.colC_MOBILE.VisibleIndex = 2;
             // 
             // colN_TYPE
             // 
@@ -380,19 +397,12 @@
             this.colN_STATUS.FieldName = "N_STATUS";
             this.colN_STATUS.Name = "colN_STATUS";
             this.colN_STATUS.Visible = true;
-            this.colN_STATUS.VisibleIndex = 2;
+            this.colN_STATUS.VisibleIndex = 4;
             // 
             // colC_DESC
             // 
             this.colC_DESC.FieldName = "C_DESC";
             this.colC_DESC.Name = "colC_DESC";
-            // 
-            // colD_LASTLOGINTIME
-            // 
-            this.colD_LASTLOGINTIME.FieldName = "D_LASTLOGINTIME";
-            this.colD_LASTLOGINTIME.Name = "colD_LASTLOGINTIME";
-            this.colD_LASTLOGINTIME.Visible = true;
-            this.colD_LASTLOGINTIME.VisibleIndex = 3;
             // 
             // colC_EMP_ID
             // 
@@ -401,7 +411,7 @@
             this.colC_EMP_ID.FieldName = "C_EMP_ID";
             this.colC_EMP_ID.Name = "colC_EMP_ID";
             this.colC_EMP_ID.Visible = true;
-            this.colC_EMP_ID.VisibleIndex = 4;
+            this.colC_EMP_ID.VisibleIndex = 5;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -421,10 +431,10 @@
             // colD_MOD_DT
             // 
             this.colD_MOD_DT.Caption = "注册时间";
-            this.colD_MOD_DT.FieldName = "D_MOD_DT";
+            this.colD_MOD_DT.FieldName = "C_TS";
             this.colD_MOD_DT.Name = "colD_MOD_DT";
             this.colD_MOD_DT.Visible = true;
-            this.colD_MOD_DT.VisibleIndex = 5;
+            this.colD_MOD_DT.VisibleIndex = 6;
             // 
             // colC_MOBILE2
             // 
@@ -436,24 +446,15 @@
             this.colC_PHONE.FieldName = "C_PHONE";
             this.colC_PHONE.Name = "colC_PHONE";
             // 
-            // labelControl2
+            // gridColumn1
             // 
-            this.labelControl2.Location = new System.Drawing.Point(8, 8);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(8, 8, 2, 2);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(36, 14);
-            this.labelControl2.TabIndex = 135;
-            this.labelControl2.Text = "用户名";
+            this.gridColumn1.Caption = "最近登录时间";
+            this.gridColumn1.FieldName = "C_LASTLOGINTIME";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
             // 
-            // txtAccountName
-            // 
-            this.txtAccountName.Location = new System.Drawing.Point(50, 6);
-            this.txtAccountName.Margin = new System.Windows.Forms.Padding(4, 6, 2, 2);
-            this.txtAccountName.Name = "txtAccountName";
-            this.txtAccountName.Size = new System.Drawing.Size(73, 20);
-            this.txtAccountName.TabIndex = 136;
-            // 
-            // FrmDEPTUser
+            // FrmDeptUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -462,7 +463,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.panel2);
-            this.Name = "FrmDEPTUser";
+            this.Name = "FrmDeptUser";
             this.Text = "部门用户";
             this.Load += new System.EventHandler(this.FrmDEPT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modTSMODULEBindingSource)).EndInit();
@@ -474,13 +475,13 @@
             this.panel4.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_User)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tSUSERBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_User)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tSDEPTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAccountName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,7 +514,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colN_TYPE;
         private DevExpress.XtraGrid.Columns.GridColumn colN_STATUS;
         private DevExpress.XtraGrid.Columns.GridColumn colC_DESC;
-        private DevExpress.XtraGrid.Columns.GridColumn colD_LASTLOGINTIME;
         private DevExpress.XtraGrid.Columns.GridColumn colC_EMP_ID;
         private DevExpress.XtraGrid.Columns.GridColumn colC_EMP_NAME;
         private DevExpress.XtraGrid.Columns.GridColumn colD_MOD_DT;
@@ -528,5 +528,6 @@
         private DevExpress.XtraEditors.SimpleButton btnUnLock;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtAccountName;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

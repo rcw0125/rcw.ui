@@ -233,7 +233,7 @@
             this.colD_MOD_DT.Caption = "维护时间";
             this.colD_MOD_DT.DisplayFormat.FormatString = "G";
             this.colD_MOD_DT.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colD_MOD_DT.FieldName = "D_MOD_DT";
+            this.colD_MOD_DT.FieldName = "C_TS";
             this.colD_MOD_DT.Name = "colD_MOD_DT";
             this.colD_MOD_DT.OptionsColumn.AllowEdit = false;
             this.colD_MOD_DT.Visible = true;

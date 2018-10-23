@@ -197,9 +197,7 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "维护时间";
-            this.gridColumn4.DisplayFormat.FormatString = "G";
-            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn4.FieldName = "D_MOD_DT";
+            this.gridColumn4.FieldName = "C_TS";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;

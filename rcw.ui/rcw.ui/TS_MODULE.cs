@@ -10,8 +10,8 @@ namespace Rcw.Model
 		
         
         [DbTable("TS_USER","tsuser", "tsuser.C_ID=userrole.C_USER_ID", JoinType.Left)]
-        [DbTable("TS_USER_ROLE_PCI","userrole", "userrole.C_ROLE_ID=rolefun.C_ROLE_ID", JoinType.Left)]
-        [DbTable("TS_ROLE_FUN_PCI","rolefun", "rolefun.C_MODULE_ID=main.C_ID", JoinType.Left)]
+        [DbTable("TS_USER_ROLE","userrole", "userrole.C_ROLE_ID=rolefun.C_ROLE_ID", JoinType.Left)]
+        [DbTable("TS_ROLE_FUN","rolefun", "rolefun.C_MODULE_ID=main.C_ID", JoinType.Left)]
         [DbTable(TableAlias ="main",IsDistinct =true)]
         
 	public class TS_MODULE : DbEntity
@@ -280,26 +280,26 @@ namespace Rcw.Model
                    RaisePropertyChanged("C_EMP_ID", true);	                   
                 }
             }
-        }        
-				
-		private DateTime _d_mod_dt;	
-		/// <summary>
-		/// 维护时间
+        }
+
+        private string _c_ts;
+        /// <summary>
+        /// 维护时间
         /// </summary>		
-				
-		[DisplayName("维护时间")]
-        public DateTime D_MOD_DT
+        [DbTableColumn(IsSysDateString = true)]
+        [DisplayName("录入时间")]
+        public string C_TS
         {
             get
             {
-            	return _d_mod_dt; 
+                return _c_ts;
             }
             set
             {
-                if (_d_mod_dt != value)
+                if (_c_ts != value)
                 {
-                   _d_mod_dt = value;
-                   RaisePropertyChanged("D_MOD_DT", true);	                   
+                    _c_ts = value;
+                    RaisePropertyChanged("C_TS", true);
                 }
             }
         }
@@ -389,7 +389,7 @@ namespace Rcw.Model
             string strWhere = " C_FUNCTION_TYPE='2' and C_ROLE_ID='" + strID + "' ";
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ta.C_ID,ta.C_MODULE_ID,ta.C_USER_ID,ta.C_FUNCTION_TYPE,ta.D_MOD_DT ");
-            strSql.Append(" FROM TS_USER_FUN_PCI ta inner join ts_module tb on ta.c_module_id=tb.c_id where tb.c_disable='1' ");
+            strSql.Append(" FROM TS_USER_FUN_PCI ta inner join TS_MODULE tb on ta.c_module_id=tb.c_id where tb.c_disable='1' ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" and " + strWhere);

@@ -6,9 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
-namespace RV.UI
+namespace Rcw.Model
 {
-    public class TS_DEPT : DbEntity
+    public class TS_Dept : DbEntity
     {
         #region  属性    
 
@@ -79,27 +79,7 @@ namespace RV.UI
             }
         }
 
-        private string _n_deptattr;
-        /// <summary>
-        /// _n_deptattr
-        /// </summary>		
-
-        [DisplayName("_n_deptattr")]
-        public string N_DEPTATTR
-        {
-            get
-            {
-                return _n_deptattr;
-            }
-            set
-            {
-                if (_n_deptattr != value)
-                {
-                    _n_deptattr = value;
-                    RaisePropertyChanged("N_DEPTATTR", true);
-                }
-            }
-        }
+       
 
 
         private string _c_name;
@@ -166,24 +146,26 @@ namespace RV.UI
             }
         }
 
-        private DateTime _d_mod_dt;
+
+
+        private string _c_ts;
         /// <summary>
         /// 维护时间
         /// </summary>		
-
-        [DisplayName("维护时间")]
-        public DateTime D_MOD_DT
+        [DbTableColumn(IsSysDateString =true)]
+        [DisplayName("录入时间")]
+        public string C_TS
         {
             get
             {
-                return _d_mod_dt;
+                return _c_ts;
             }
             set
             {
-                if (_d_mod_dt != value)
+                if (_c_ts != value)
                 {
-                    _d_mod_dt = value;
-                    RaisePropertyChanged("D_MOD_DT", true);
+                    _c_ts = value;
+                    RaisePropertyChanged("C_TS", true);
                 }
             }
         }
@@ -194,9 +176,9 @@ namespace RV.UI
         /// <summary>
 		/// 获取数据列表
 		/// </summary>
-		public static List<TS_DEPT> GetList(string whereSql = "1=1", params object[] args)
+		public static List<TS_Dept> GetList(string whereSql = "1=1", params object[] args)
         {
-            return DbContext.LoadDataByWhere<TS_DEPT>(whereSql, args);
+            return DbContext.LoadDataByWhere<TS_Dept>(whereSql, args);
         }
 
       

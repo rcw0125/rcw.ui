@@ -268,7 +268,6 @@ C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\bin\Debug\de\DevExpress.Office.v17.2.C
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\bin\Debug\es\DevExpress.Office.v17.2.Core.resources.dll
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\bin\Debug\ja\DevExpress.Office.v17.2.Core.resources.dll
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\bin\Debug\ru\DevExpress.Office.v17.2.Core.resources.dll
-C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\rcw.ui.csprojAssemblyReference.cache
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\RV.UI.Form1.resources
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\RV.UI.FrmDeptSelect.resources
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\RV.UI.FrmDeptUser.resources
@@ -292,3 +291,4 @@ C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\rcw.ui.csproj.CoreCompileInp
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\rcw.ui.csproj.CopyComplete
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\RV.UI.dll
 C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\RV.UI.pdb
+C:\Users\rcw\Desktop\rcw.ui\rcw.ui\rcw.ui\obj\Debug\rcw.ui.csprojAssemblyReference.cache

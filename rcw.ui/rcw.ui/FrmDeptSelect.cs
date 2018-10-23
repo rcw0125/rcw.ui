@@ -23,13 +23,13 @@ namespace RV.UI
         {
             tlDept.KeyFieldName = "C_ID";
             tlDept.ParentFieldName = "C_PARENT_ID";
-            tSDEPTBindingSource.DataSource = TS_DEPT.GetList("1=1 order by c_id");
+            tSDEPTBindingSource.DataSource = TS_Dept.GetList("1=1 order by c_id");
             tlDept.OptionsBehavior.Editable = false;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            var dept = tlDept.GetFocusedRow() as TS_DEPT;
+            var dept = tlDept.GetFocusedRow() as TS_Dept;
             if (dept == null)
             {
                 MessageBox.Show("请选择部门");

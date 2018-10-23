@@ -6,9 +6,9 @@ using Rcw.Data;
 using System.ComponentModel;
 namespace Rcw.Model
 {
-	 	//TS_ROLE_PCI
+	 	//TS_ROLE
 		
-	public class TS_ROLE_PCI : DbEntity
+	public class TS_ROLE : DbEntity
 	{
    		#region  属性    
       			
@@ -120,26 +120,26 @@ namespace Rcw.Model
                    RaisePropertyChanged("C_EMP_ID", true);	                   
                 }
             }
-        }        
-				
-		private DateTime _d_mod_dt;	
-		/// <summary>
-		/// 维护时间
+        }
+
+        private string _c_ts;
+        /// <summary>
+        /// 维护时间
         /// </summary>		
-				
-		[DisplayName("维护时间")]
-        public DateTime D_MOD_DT
+        [DbTableColumn(IsSysDateString = true)]
+        [DisplayName("录入时间")]
+        public string C_TS
         {
             get
             {
-            	return _d_mod_dt; 
+                return _c_ts;
             }
             set
             {
-                if (_d_mod_dt != value)
+                if (_c_ts != value)
                 {
-                   _d_mod_dt = value;
-                   RaisePropertyChanged("D_MOD_DT", true);	                   
+                    _c_ts = value;
+                    RaisePropertyChanged("C_TS", true);
                 }
             }
         }
@@ -161,7 +161,7 @@ namespace Rcw.Model
         public static DataTable GetUserRoleList(string strUserID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT TA.C_ID,TA.C_ROLE_NAME,decode((select tb.c_role_id from ts_user_role_pci tb where tb.n_status=1 and tb.c_user_id='" + strUserID + "' and tb.c_role_id=ta.c_id),'','0','1')as c_checkstate FROM TS_ROLE_PCI TA where ta.N_STATUS=1 ");
+            strSql.Append("SELECT TA.C_ID,TA.C_ROLE_NAME,decode((select tb.c_role_id from TS_USER_ROLE tb where tb.n_status=1 and tb.c_user_id='" + strUserID + "' and tb.c_role_id=ta.c_id),'','0','1')as c_checkstate FROM TS_ROLE TA where ta.N_STATUS=1 ");
 
             return DbContext.GetDataTable(strSql.ToString());
         }
@@ -174,7 +174,7 @@ namespace Rcw.Model
         public static bool Exists(string C_ID)
 		{
 		    #region  方法
-			var List=DbContext.LoadDataByWhere<TS_ROLE_PCI>("C_ID=@C_ID", C_ID);
+			var List=DbContext.LoadDataByWhere<TS_ROLE>("C_ID=@C_ID", C_ID);
 		    if(List.Count>0)
 		    {
 		         return true;
@@ -195,7 +195,7 @@ namespace Rcw.Model
 		    #region  方法
 			try
 		    {
-		        DbContext.ExeSql("delete from TS_ROLE_PCI where  C_ID=@C_ID", C_ID);			
+		        DbContext.ExeSql("delete from TS_ROLE where  C_ID=@C_ID", C_ID);			
 		    }
 		    catch
 		    {
@@ -208,17 +208,17 @@ namespace Rcw.Model
 		/// <summary>
 		/// 获取数据列表
 		/// </summary>
-		public static List<TS_ROLE_PCI> GetList(string whereSql="1=1", params object[] args)
+		public static List<TS_ROLE> GetList(string whereSql="1=1", params object[] args)
 		{
-		    return DbContext.LoadDataByWhere<TS_ROLE_PCI>(whereSql, args);
+		    return DbContext.LoadDataByWhere<TS_ROLE>(whereSql, args);
 		}
 		/// <summary>
 		/// 使用LoadDataByWhere（）获取单表DbEntityTable
 		/// </summary>
-		public static DbEntityTable<TS_ROLE_PCI> DbEntityTable(string whereSql="1=1", params object[] args)
+		public static DbEntityTable<TS_ROLE> DbEntityTable(string whereSql="1=1", params object[] args)
 		{			
 		    #region  方法
-			DbEntityTable<TS_ROLE_PCI>  dbEntityTable=new DbEntityTable<TS_ROLE_PCI>();
+			DbEntityTable<TS_ROLE>  dbEntityTable=new DbEntityTable<TS_ROLE>();
 			try
 			{
 			    dbEntityTable.LoadDataByWhere(whereSql,args);				
@@ -233,10 +233,10 @@ namespace Rcw.Model
 		/// <summary>
 		/// 根据主键ID获取实体模型
 		/// </summary>
-		public static TS_ROLE_PCI GetModel(string C_ID)
+		public static TS_ROLE GetModel(string C_ID)
 		{
 		    #region  方法
-			var list =DbContext.LoadDataByWhere<TS_ROLE_PCI>("C_ID=@C_ID", C_ID);
+			var list =DbContext.LoadDataByWhere<TS_ROLE>("C_ID=@C_ID", C_ID);
 		    if(list.Count>0)
 		    {
 		        return list[0];
@@ -251,10 +251,10 @@ namespace Rcw.Model
 		/// <summary>
 		/// 根据条件获取实体模型
 		/// </summary>
-		public static TS_ROLE_PCI GetModel(string whereSql="1=1", params object[] args)
+		public static TS_ROLE GetModel(string whereSql="1=1", params object[] args)
 		{
 		    #region  方法
-			var list =DbContext.LoadDataByWhere<TS_ROLE_PCI>(whereSql,args);
+			var list =DbContext.LoadDataByWhere<TS_ROLE>(whereSql,args);
 		    if(list.Count>0)
 		    {
 		        return list[0];
@@ -266,14 +266,14 @@ namespace Rcw.Model
 			#endregion 方法
 		    
 		}
-        public static List<TS_ROLE_PCI> GetSelectedRow(DevExpress.XtraGrid.Views.Grid.GridView gv)
+        public static List<TS_ROLE> GetSelectedRow(DevExpress.XtraGrid.Views.Grid.GridView gv)
         {
-            List<TS_ROLE_PCI> userList = new List<TS_ROLE_PCI>();
+            List<TS_ROLE> userList = new List<TS_ROLE>();
             int[] row = gv.GetSelectedRows();
 
             foreach (var item in row)
             {
-                var da = gv.GetRow(item) as TS_ROLE_PCI;
+                var da = gv.GetRow(item) as TS_ROLE;
                 userList.Add(da);
             }
             return userList;

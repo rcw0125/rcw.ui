@@ -129,7 +129,6 @@ namespace RV.UI
                 TS_MODULE tsMoudle = new TS_MODULE();           
                 tsMoudle.C_PARENT_ID = tag;
                 tsMoudle.N_ORDER = menuMag.GetModuleMaxOrder(tsMoudle.C_PARENT_ID) + 1;
-                tsMoudle.D_MOD_DT = DateTime.Now;
                 tsMoudle.C_EMP_ID = UserInfo.UserID;
                 tsMoudle.C_DISABLE = "1";
                 tsMoudle.C_MODULE_TYPE = "3";

@@ -234,24 +234,24 @@ namespace Rcw.Model
 
         }        
 				
-		private DateTime _d_lastlogintime;	
+		private string _c_lastlogintime;	
 		/// <summary>
 		/// 最后登陆时间
         /// </summary>		
 				
 		[DisplayName("最后登陆时间")]
-        public DateTime D_LASTLOGINTIME
+        public string C_LASTLOGINTIME
         {
             get
             {
-            	return _d_lastlogintime; 
+            	return _c_lastlogintime; 
             }
             set
             {
-                if (_d_lastlogintime != value)
+                if (_c_lastlogintime != value)
                 {
-                   _d_lastlogintime = value;
-                   RaisePropertyChanged("D_LASTLOGINTIME", true);	                   
+                    _c_lastlogintime = value;
+                   RaisePropertyChanged("C_LASTLOGINTIME", true);	                   
                 }
             }
         }        
@@ -276,53 +276,33 @@ namespace Rcw.Model
                    RaisePropertyChanged("C_EMP_ID", true);	                   
                 }
             }
-        }        
-				
-		private string _c_emp_name;	
-		/// <summary>
-		/// 系统操作人姓名
+        }
+
+
+
+        private string _c_ts;
+        /// <summary>
+        /// 维护时间
         /// </summary>		
-				
-		[DisplayName("系统操作人姓名")]
-        public string C_EMP_NAME
+        [DbTableColumn(IsSysDateString = true)]
+        [DisplayName("录入时间")]
+        public string C_TS
         {
             get
             {
-            	return _c_emp_name; 
+                return _c_ts;
             }
             set
             {
-                if (_c_emp_name != value)
+                if (_c_ts != value)
                 {
-                   _c_emp_name = value;
-                   RaisePropertyChanged("C_EMP_NAME", true);	                   
+                    _c_ts = value;
+                    RaisePropertyChanged("C_TS", true);
                 }
             }
-        }        
-				
-		private DateTime _d_mod_dt;	
-		/// <summary>
-		/// 系系统操作时间
-        /// </summary>		
-				
-		[DisplayName("系系统操作时间")]
-        public DateTime D_MOD_DT
-        {
-            get
-            {
-            	return _d_mod_dt; 
-            }
-            set
-            {
-                if (_d_mod_dt != value)
-                {
-                   _d_mod_dt = value;
-                   RaisePropertyChanged("D_MOD_DT", true);	                   
-                }
-            }
-        }        
-				
-		private string _c_mobile2;	
+        }
+
+        private string _c_mobile2;	
 		/// <summary>
 		/// 手机2
         /// </summary>		

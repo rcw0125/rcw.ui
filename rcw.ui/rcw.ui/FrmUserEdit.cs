@@ -89,8 +89,7 @@ namespace RV.UI
                    
                     //mod.N_STATUS = Convert.ToInt32(icbo_State.EditValue);//状态(1正常，2，3，4冻结)
                     mod.C_EMP_ID = UserInfo.UserID;//系统操作人编号
-                    mod.C_EMP_NAME = UserInfo.UserName;//系统操作人姓名
-                    mod.D_MOD_DT = ServerTime.timeNow();//系系统操作时间
+                 
                     mod.Save();
 
                     if (!string.IsNullOrEmpty(btnEdit_Dept.Text.Trim()))
@@ -144,7 +143,6 @@ namespace RV.UI
                 {
                     mod.C_PASSWORD = Common.MD5("123456");//密码
                     mod.C_EMP_ID = UserInfo.UserID;//系统操作人编号                   
-                    mod.D_MOD_DT = ServerTime.timeNow();//系系统操作时间
                     mod.Save();
                     MessageBox.Show("密码重置成功!");
                     this.Close();

@@ -65,7 +65,7 @@
             // 
             // TSDEPTBindingSource
             // 
-            this.TSDEPTBindingSource.DataSource = typeof(RV.UI.TS_DEPT);
+            this.TSDEPTBindingSource.DataSource = typeof(Rcw.Model.TS_Dept);
             // 
             // panel2
             // 

@@ -22,8 +22,8 @@ namespace RV.UI
 
         public Login()
         {
-            Rcw.Data.DbContext.AddDataSource("CAP", DbContext.DbType.Oracle, "192.168.2.204", "orcl", "XGCAPTEST", "XGCAPTEST");
-            DbContext.DefaultDataSourceName = "CAP";
+            //Rcw.Data.DbContext.AddDataSource("CAP", DbContext.DbType.Oracle, "192.168.2.204", "orcl", "XGCAPTEST", "XGCAPTEST");
+            //DbContext.DefaultDataSourceName = "CAP";
             InitializeComponent();
         }
 

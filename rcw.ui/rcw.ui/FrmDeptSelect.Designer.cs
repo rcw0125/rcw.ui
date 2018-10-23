@@ -125,7 +125,7 @@
             // 
             // tSDEPTBindingSource
             // 
-            this.tSDEPTBindingSource.DataSource = typeof(RV.UI.TS_DEPT);
+            this.tSDEPTBindingSource.DataSource = typeof(Rcw.Model.TS_Dept);
             // 
             // btn_Save
             // 

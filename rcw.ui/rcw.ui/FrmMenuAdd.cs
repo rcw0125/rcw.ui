@@ -175,8 +175,7 @@ namespace RV.UI
                     curModule.C_MODULECLASS = cbo_FrmName.Text;
                     curModule.C_DISABLE = icbo_State.EditValue.ToString();
                     curModule.N_IMAGEINDEX = Convert.ToInt32(icbo_ImgIndex.EditValue.ToString());
-                    curModule.C_EMP_ID = UserInfo.UserID;
-                    curModule.D_MOD_DT = ServerTime.timeNow();
+                    curModule.C_EMP_ID = UserInfo.UserID;         
                     curModule.C_QUERY_STR = txt_Parameter.Text.Trim();
                     curModule.Save();
                     MessageBox.Show("操作成功！");
@@ -203,7 +202,7 @@ namespace RV.UI
                     modNew.N_IMAGEINDEX = Convert.ToInt32(icbo_ImgIndex.EditValue.ToString());
                     modNew.N_ORDER = menuMag.GetModuleMaxOrder(modNew.C_PARENT_ID) +1;
                     modNew.C_EMP_ID = UserInfo.UserID;
-                    modNew.D_MOD_DT = ServerTime.timeNow();
+                
                     modNew.C_MODULE_TYPE = "2";
                     modNew.C_QUERY_STR = txt_Parameter.Text.Trim();
                     modNew.Save();

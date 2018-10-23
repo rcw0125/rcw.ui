@@ -8,9 +8,9 @@ using System.Collections;
 
 namespace Rcw.Model
 {
-	 	//TS_ROLE_FUN_PCI
+	 	//TS_ROLE_FUN
 		
-	public class TS_ROLE_FUN_PCI : DbEntity
+	public class TS_ROLE_FUN : DbEntity
 	{
    		#region  属性    
       			
@@ -18,7 +18,7 @@ namespace Rcw.Model
 		/// <summary>
 		/// 主键
         /// </summary>		
-		[DbTableColumn(IsPrimaryKey = true)]		
+		[DbTableColumn(IsPrimaryKey = true,IsGuid =true)]		
 		[DisplayName("主键")]
         public string C_ID
         {
@@ -100,26 +100,26 @@ namespace Rcw.Model
                    RaisePropertyChanged("C_FUNCTION_TYPE", true);	                   
                 }
             }
-        }        
-				
-		private DateTime _d_mod_dt;	
-		/// <summary>
-		/// 添加时间
+        }
+
+        private string _c_ts;
+        /// <summary>
+        /// 维护时间
         /// </summary>		
-				
-		[DisplayName("添加时间")]
-        public DateTime D_MOD_DT
+        [DbTableColumn(IsSysDateString = true)]
+        [DisplayName("录入时间")]
+        public string C_TS
         {
             get
             {
-            	return _d_mod_dt; 
+                return _c_ts;
             }
             set
             {
-                if (_d_mod_dt != value)
+                if (_c_ts != value)
                 {
-                   _d_mod_dt = value;
-                   RaisePropertyChanged("D_MOD_DT", true);	                   
+                    _c_ts = value;
+                    RaisePropertyChanged("C_TS", true);
                 }
             }
         }
@@ -137,7 +137,7 @@ namespace Rcw.Model
         public static DataTable Get_MenuID(string strID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT distinct t.C_ID,t.n_order FROM ts_module t where t.c_module_type<>'3' START WITH C_ID in (" + strID + ") CONNECT BY PRIOR C_PARENT_ID = C_ID order by t.n_order");
+            strSql.Append("SELECT distinct t.C_ID,t.n_order FROM TS_MODULE t where t.c_module_type<>'3' START WITH C_ID in (" + strID + ") CONNECT BY PRIOR C_PARENT_ID = C_ID order by t.n_order");
 
             return DbContext.GetDataTable(strSql.ToString());
         }
@@ -155,18 +155,18 @@ namespace Rcw.Model
         {
             ArrayList SQLStringList = new ArrayList();
 
-            SQLStringList.Add(" delete from TS_ROLE_FUN_PCI where C_ROLE_ID='" + RoleID + "' ");
+            SQLStringList.Add(" delete from TS_ROLE_FUN where C_ROLE_ID='" + RoleID + "' ");
 
             foreach (string id in lstCheckedID)
             {
-                SQLStringList.Add(" insert into TS_ROLE_FUN_PCI(C_MODULE_ID, C_ROLE_ID, C_FUNCTION_TYPE)values('" + id + "','" + RoleID + "','2') ");
+                SQLStringList.Add(" insert into TS_ROLE_FUN(C_MODULE_ID, C_ROLE_ID, C_FUNCTION_TYPE)values('" + id + "','" + RoleID + "','2') ");
             }
 
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                SQLStringList.Add(" insert into TS_ROLE_FUN_PCI(C_MODULE_ID, C_ROLE_ID, C_FUNCTION_TYPE)values('" + dt.Rows[i]["C_ID"].ToString() + "','" + RoleID + "','1') ");
-            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    SQLStringList.Add(" insert into TS_ROLE_FUN(C_MODULE_ID, C_ROLE_ID, C_FUNCTION_TYPE)values('" + dt.Rows[i]["C_ID"].ToString() + "','" + RoleID + "','1') ");
+            //}
 
             return DbContext.ExecuteSqlTran(SQLStringList);
         }
@@ -177,7 +177,7 @@ namespace Rcw.Model
         public static bool Exists(string C_ID)
 		{
 		    #region  方法
-			var List=DbContext.LoadDataByWhere<TS_ROLE_FUN_PCI>("C_ID=@C_ID", C_ID);
+			var List=DbContext.LoadDataByWhere<TS_ROLE_FUN>("C_ID=@C_ID", C_ID);
 		    if(List.Count>0)
 		    {
 		         return true;
@@ -198,7 +198,7 @@ namespace Rcw.Model
 		    #region  方法
 			try
 		    {
-		        DbContext.ExeSql("delete from TS_ROLE_FUN_PCI where  C_ID=@C_ID", C_ID);			
+		        DbContext.ExeSql("delete from TS_ROLE_FUN where  C_ID=@C_ID", C_ID);			
 		    }
 		    catch
 		    {
@@ -211,17 +211,17 @@ namespace Rcw.Model
 		/// <summary>
 		/// 获取数据列表
 		/// </summary>
-		public static List<TS_ROLE_FUN_PCI> GetList(string whereSql="1=1", params object[] args)
+		public static List<TS_ROLE_FUN> GetList(string whereSql="1=1", params object[] args)
 		{
-		    return DbContext.LoadDataByWhere<TS_ROLE_FUN_PCI>(whereSql, args);
+		    return DbContext.LoadDataByWhere<TS_ROLE_FUN>(whereSql, args);
 		}
 		/// <summary>
 		/// 使用LoadDataByWhere（）获取单表DbEntityTable
 		/// </summary>
-		public static DbEntityTable<TS_ROLE_FUN_PCI> DbEntityTable(string whereSql="1=1", params object[] args)
+		public static DbEntityTable<TS_ROLE_FUN> DbEntityTable(string whereSql="1=1", params object[] args)
 		{			
 		    #region  方法
-			DbEntityTable<TS_ROLE_FUN_PCI>  dbEntityTable=new DbEntityTable<TS_ROLE_FUN_PCI>();
+			DbEntityTable<TS_ROLE_FUN>  dbEntityTable=new DbEntityTable<TS_ROLE_FUN>();
 			try
 			{
 			    dbEntityTable.LoadDataByWhere(whereSql,args);				
@@ -236,10 +236,10 @@ namespace Rcw.Model
 		/// <summary>
 		/// 根据主键ID获取实体模型
 		/// </summary>
-		public static TS_ROLE_FUN_PCI GetModel(string C_ID)
+		public static TS_ROLE_FUN GetModel(string C_ID)
 		{
 		    #region  方法
-			var list =DbContext.LoadDataByWhere<TS_ROLE_FUN_PCI>("C_ID=@C_ID", C_ID);
+			var list =DbContext.LoadDataByWhere<TS_ROLE_FUN>("C_ID=@C_ID", C_ID);
 		    if(list.Count>0)
 		    {
 		        return list[0];
@@ -254,10 +254,10 @@ namespace Rcw.Model
 		/// <summary>
 		/// 根据条件获取实体模型
 		/// </summary>
-		public static TS_ROLE_FUN_PCI GetModel(string whereSql="1=1", params object[] args)
+		public static TS_ROLE_FUN GetModel(string whereSql="1=1", params object[] args)
 		{
 		    #region  方法
-			var list =DbContext.LoadDataByWhere<TS_ROLE_FUN_PCI>(whereSql,args);
+			var list =DbContext.LoadDataByWhere<TS_ROLE_FUN>(whereSql,args);
 		    if(list.Count>0)
 		    {
 		        return list[0];

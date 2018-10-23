@@ -14,7 +14,7 @@ namespace RV.UI
 {
     public partial class FrmRole : Form
     {
-        private List<TS_ROLE_PCI> roleList = null;
+        private List<TS_ROLE> roleList = null;
         public FrmRole()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace RV.UI
                 {
                     strSql = "C_ROLE_NAME='"+txt_RoleName.Text.Trim()+"'";
                 }
-                roleList = TS_ROLE_PCI.GetList(strSql);
+                roleList = TS_ROLE.GetList(strSql);
                 gc_Role.DataSource = roleList;
                 gv_Role.RefreshData();
                 gv_Role.SetMultiSelect();
@@ -58,10 +58,9 @@ namespace RV.UI
         {
             try
             {
-                TS_ROLE_PCI newRole = new TS_ROLE_PCI();
-                newRole.C_EMP_ID = UserInfo.UserID;
-                newRole.D_MOD_DT = DateTime.Now;
-                newRole.N_STATUS = TS_ROLE_PCI.N_Status.正常;
+                TS_ROLE newRole = new TS_ROLE();
+                newRole.C_EMP_ID = UserInfo.UserID;               
+                newRole.N_STATUS = TS_ROLE.N_Status.正常;
                 roleList.Add(newRole);
                 gv_Role.RefreshData();
             }
@@ -93,7 +92,7 @@ namespace RV.UI
             try
             {
                
-                TS_ROLE_PCI curRole = gv_Role.GetFocusedRow() as TS_ROLE_PCI;
+                TS_ROLE curRole = gv_Role.GetFocusedRow() as TS_ROLE;
 
                 if (curRole != null)
                 {
@@ -109,7 +108,7 @@ namespace RV.UI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var data = TS_ROLE_PCI.GetSelectedRow(gv_Role);
+            var data = TS_ROLE.GetSelectedRow(gv_Role);
             data.Update();
             MessageBox.Show("操作成功！");
             RefreshData();

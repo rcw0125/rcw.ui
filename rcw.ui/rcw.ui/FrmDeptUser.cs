@@ -20,7 +20,7 @@ namespace RV.UI
         /// <summary>
         /// 所有部门列表
         /// </summary>
-        List<TS_DEPT> childDeptList = null;
+        List<TS_Dept> childDeptList = null;
         List<TS_USER> userItemList = null;
 
         public FrmDeptUser()

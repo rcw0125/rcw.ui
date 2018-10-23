@@ -16,8 +16,8 @@ namespace RV.UI
         string name = "";
         string text = "";
         string tag = "";
-        List<TS_DEPT> childDeptList = null;
-        List<TS_DEPT> deptItemList = null;
+        List<TS_Dept> childDeptList = null;
+        List<TS_Dept> deptItemList = null;
         public FrmDEPT()
         {
             InitializeComponent();
@@ -90,12 +90,12 @@ namespace RV.UI
             try
             {
 
-                TS_DEPT tsDept = new TS_DEPT();
+                TS_Dept tsDept = new TS_Dept();
                 tsDept.C_ID = menuMag.GetMaxId(tag);
                 tsDept.C_PARENT_ID = tag;
                 tsDept.C_NAME = "1";
                 tsDept.C_EMP_ID = UserInfo.UserID;
-                tsDept.D_MOD_DT = DateTime.Now;
+               
                 tsDept.N_STATUS = 1;
                 deptItemList.Add(tsDept);
                 gv_ANXX.RefreshData();
@@ -115,7 +115,7 @@ namespace RV.UI
         {
             try
             {
-                var item = gv_ANXX.GetFocusedRow() as TS_DEPT;
+                var item = gv_ANXX.GetFocusedRow() as TS_Dept;
                 if (MessageBox.Show("确认要删除数据" + item.C_NAME + "吗？", "确认", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     item.DataState = DataRowState.Deleted;
@@ -159,7 +159,7 @@ namespace RV.UI
                 if (!string.IsNullOrEmpty(treeView1.SelectedNode.Name) && !string.IsNullOrEmpty(treeView1.SelectedNode.Tag.ToString()))
                 {
 
-                    deptItemList = TS_DEPT.GetList("C_PARENT_ID=@C_PARENT_ID order by C_ID", tag);
+                    deptItemList = TS_Dept.GetList("C_PARENT_ID=@C_PARENT_ID order by C_ID", tag);
                     gc_ANXX.DataSource = deptItemList;
                     gv_ANXX.BestFitColumns();
                     if (deptItemList.Count > 0)

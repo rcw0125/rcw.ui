@@ -13,8 +13,15 @@ namespace RV.UI
 
         public static void initSystem()
         {
-            Rcw.Data.DbContext.AddDataSource("CAP", DbContext.DbType.Oracle, "192.168.2.204", "orcl", "XGCAPTEST", "XGCAPTEST");
-            DbContext.DefaultDataSourceName = "CAP";
+            //Rcw.Data.DbContext.AddDataSource("CAP", DbContext.DbType.Oracle, "192.168.2.204", "orcl", "XGCAPTEST", "XGCAPTEST");
+            //DbContext.DefaultDataSourceName = "CAP";
+
+            DbContext.Create<TS_USER>();
+            DbContext.Create<TS_ROLE>();
+            DbContext.Create<TS_USER_ROLE>();
+            DbContext.Create<TS_ROLE_FUN>();
+            DbContext.Create<TS_Dept>();
+            DbContext.Create<TS_MODULE>();
             TS_USER user = new TS_USER();
             user.C_NAME = "管理员";
             user.C_ACCOUNT = "system";
@@ -23,8 +30,7 @@ namespace RV.UI
             user.N_STATUS = TS_USER.userStatus.正常;//状态(1正常，2，3，4冻结)
             user.C_EMP_ID = "";//系统操作人编号        
             user.C_DEPT = "1";
-            user.D_LASTLOGINTIME = DateTime.Now;
-            user.D_MOD_DT = DateTime.Now;
+            user.C_LASTLOGINTIME = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             user.Save();
 
             var sysUser = TS_USER.GetModel("C_ACCOUNT=@C_ACCOUNT", "system");
@@ -113,7 +119,7 @@ namespace RV.UI
             modNew5.Save();
 
 
-            TS_DEPT tsDept = new TS_DEPT();
+            TS_Dept tsDept = new TS_Dept();
             tsDept.C_ID = "1";
             tsDept.C_PARENT_ID = "-1";
             tsDept.C_NAME = "集团";
@@ -139,17 +145,17 @@ namespace RV.UI
         /// <summary>
         /// 获得部门根节点数据列表
         /// </summary>
-        public static List<TS_DEPT> GetDeptRootList()
+        public static List<TS_Dept> GetDeptRootList()
         {          
-            return TS_DEPT.GetList("N_STATUS=1 and C_PARENT_ID='-1' order by c_code");
+            return TS_Dept.GetList("N_STATUS=1 and C_PARENT_ID='-1' order by c_code");
         }
 
         /// <summary>
 		/// 获得部门子节点数据列表
 		/// </summary>
-		public static List<TS_DEPT> GetDeptList()
+		public static List<TS_Dept> GetDeptList()
         {          
-            return TS_DEPT.GetList("N_STATUS=1  order by c_code");
+            return TS_Dept.GetList("N_STATUS=1  order by c_code");
         }
 
         /// <summary>
@@ -177,10 +183,10 @@ namespace RV.UI
         public static string GetMaxId(string c_parent_id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select decode(max(t.c_id),null,0,max(t.c_id)) as c_id from ts_dept t where t.c_parent_id='" + c_parent_id + "' ");
-
+            strSql.Append("select max(t.c_id) from ts_dept t where t.c_parent_id='" + c_parent_id + "' ");
             object obj = DbContext.ExecuteScalar(strSql.ToString());
-            if (obj == null||obj.ToString()=="0")
+
+            if (obj == null || Convert.IsDBNull(obj))
             {
                 return c_parent_id+"01";
             }
@@ -215,9 +221,12 @@ namespace RV.UI
         public static int GetModuleMaxOrder(string c_parent_id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select decode(max(t.n_order),null,0,max(t.n_order)) as c_id from ts_module t where t.c_parent_id='" + c_parent_id + "' ");
-
+            strSql.Append("select max(t.n_order) from TS_MODULE t where t.c_parent_id='" + c_parent_id + "' ");
             object obj = DbContext.ExecuteScalar(strSql.ToString());
+            if (obj == null||Convert.IsDBNull(obj))
+            {
+                return 0;
+            }
             return Convert.ToInt16(obj);
         }
 
@@ -227,9 +236,13 @@ namespace RV.UI
         public static int GetDeptMaxOrder(string c_parent_id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select decode(max(t.n_order),null,0,max(t.n_order)) as c_id from ts_dept t where t.c_parent_id='" + c_parent_id + "' ");
+            strSql.Append("select max(t.n_order) from ts_dept t where t.c_parent_id='" + c_parent_id + "' ");
 
             object obj = DbContext.ExecuteScalar(strSql.ToString());
+            if (obj == null || Convert.IsDBNull(obj))
+            {
+                return 0;
+            }
             return Convert.ToInt16(obj);
         }
 

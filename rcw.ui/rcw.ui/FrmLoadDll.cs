@@ -83,7 +83,7 @@ namespace RV.UI
                                 item.N_ORDER = i_order + 1;
                                 item.C_DISABLE = "1";
                                 item.C_EMP_ID = UserInfo.UserID;
-                                item.D_MOD_DT = DateTime.Now;
+      
                                 item.C_MODULE_TYPE = "1";
                                 item.N_IMAGEINDEX = 1;
                                 moduleList.Add(item);

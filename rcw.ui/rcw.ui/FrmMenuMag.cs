@@ -45,7 +45,7 @@ namespace RV.UI
             try
             {
                 //dt = bllModule.GetList("", "").Tables[0];
-                tsModuleList = TS_MODULE.GetList(" (C_MODULE_TYPE＝'1' or C_MODULE_TYPE='2' ) order by MAIN.N_ORDER asc");
+                tsModuleList = TS_MODULE.GetList(" (C_MODULE_TYPE='1' or C_MODULE_TYPE='2' ) order by MAIN.N_ORDER asc");
 
                 tl_Module.KeyFieldName = "C_ID";//主键名称  
                 tl_Module.ParentFieldName = "C_PARENT_ID";//父级ID 

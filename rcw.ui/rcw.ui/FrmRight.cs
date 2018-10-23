@@ -217,7 +217,7 @@ namespace RV.UI
 
                 if (idStr.Length > 0)
                 {
-                    DataTable dtMenuID = TS_ROLE_FUN_PCI.Get_MenuID(idStr.Substring(0, idStr.Length - 1));
+                    DataTable dtMenuID = TS_ROLE_FUN.Get_MenuID(idStr.Substring(0, idStr.Length - 1));
 
                     if (strType == "1")//用户权限
                     {
@@ -228,7 +228,7 @@ namespace RV.UI
                     }
                     else if (strType == "2")//角色权限
                     {
-                        if (TS_ROLE_FUN_PCI.SaveFun(lstCheckedID, dtMenuID, strID))
+                        if (TS_ROLE_FUN.SaveFun(lstCheckedID, dtMenuID, strID))
                         {
                             MessageBox.Show("权限分配成功！");
                         }
